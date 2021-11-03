@@ -1,41 +1,36 @@
 NAME				:= cli_game.out
 
+
+
 SRCS				:= \
-					   main.c \
-					   lmt_c_library/lmt_alloc/lmt_alloc.c \
-					   lmt_c_library/lmt_sequence/t_lmt_sequence_type.c \
-					   lmt_c_library/lmt_sequence/t_lmt_sequence_method.c \
-					   lmt_c_library/lmt_sequence/t_lmt_sequence_element_type.c \
-					   lmt_c_library/lmt_sequence/t_lmt_sequence_element_method.c \
-					   lmt_c_library/lmt_string/t_lmt_string_type.c \
-					   lmt_c_library/lmt_string/t_lmt_string_method.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_memcpy.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_strlen.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_strcpy.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_strdup.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_strchr.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_strrchr.c \
-					   lmt_c_library/lmt_unsafe/lmt_unsafe_string_starts.c \
-					   lmt_c_library/lmt_util/lmt_atoi.c \
-					   lmt_c_library/lmt_util/lmt_is_space.c \
-					   lmt_c_library/lmt_util/lmt_is_digit.c
+					   display/display.c \
+					   display/display_method.c \
+					   game/game.c \
+					   time/time_method.c \
+					   time/time_type.c \
+					   vector2/vector2.c \
+					   main.c
 OBJS				:= $(SRCS:.c=.o)
 
 CC					:= clang
 CFLAG				:= -Wall -Wextra -Werror
 
 ABSTRACT_INCLUDE	:= \
-					   . \
+					   display \
+					   game \
+					   time \
+					   vector2 \
 					   lmt_c_library \
-					   lmt_c_library/lmt_alloc \
-					   lmt_c_library/lmt_reader \
-					   lmt_c_library/lmt_sequence \
+					   lmt_c_library/lmt_c_library \
+					   lmt_c_library/lmt_io \
+					   lmt_c_library/lmt_iterator \
+					   lmt_c_library/lmt_list \
+					   lmt_c_library/lmt_primitive_type \
 					   lmt_c_library/lmt_string \
-					   lmt_c_library/lmt_unsafe \
-					   lmt_c_library/lmt_util
+					   . 
 INCLUDE				:= $(addprefix -I ,$(ABSTRACT_INCLUDE))
 
-LIBRARY				:= -l pthread
+LIBRARY				:= -l pthread -L lmt_c_library -l lmt_c_library
 
 COMPILE				= $(CC) $(CFLAG) $(INCLUDE) $(DEBUG_OPTION)
 LINK				= $(CC) $(CFLAG) $(INCLUDE) $(DEBUG_OPTION) $(LIBRARY)
