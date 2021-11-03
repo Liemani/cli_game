@@ -12,9 +12,9 @@ void	display_buffer_init(t_display *display)
 	char	*last_of_row;
 	int		row;
 
-	display->buffer = malloc(sizeof(char *) * (display->width * display->height));
+	display->buffer = malloc(sizeof(char *) * ((display->width + 1) * display->height - 1));
 	last_of_row = display->buffer + display->width;
-	row = 0;
+	row = 1;
 	while (row < display->height)
 	{
 		*last_of_row = '\n';
@@ -28,7 +28,8 @@ static void	display_init(t_display *display, int width, int height)
 	display->width = width;
 	display->height = height;
 	display_buffer_init(display);
-	display_fill_ch(display, ' ');
+	display_fill_ch(display, '`');
+	lmt_write(1, "\n\n\n\n\n\n\n\n");
 }
 
 t_display	*display_new(int width, int height)

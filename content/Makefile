@@ -1,10 +1,14 @@
 NAME				:= cli_game.out
 
+LMT_C_LIBRARY		:= lmt_c_library/liblmt_c_library.a
+
 
 
 SRCS				:= \
+					   character/character.c \
 					   display/display.c \
 					   display/display_method.c \
+					   game/game_constructor.c \
 					   game/game.c \
 					   time/time_method.c \
 					   time/time_type.c \
@@ -16,6 +20,7 @@ CC					:= clang
 CFLAG				:= -Wall -Wextra -Werror
 
 ABSTRACT_INCLUDE	:= \
+					   character \
 					   display \
 					   game \
 					   time \
@@ -40,7 +45,7 @@ RM					:= rm -f
 
 
 .PHONY:				all debug setdebug clean fclean re
-all:				$(NAME)
+all:				$(LMT_C_LIBRARY) $(NAME)
 
 debug:				clean setdebug $(NAME)
 setdebug:
@@ -53,6 +58,9 @@ fclean:				clean
 re:					fclean all
 
 
+
+$(LMT_C_LIBRARY):
+					make -C lmt_c_library
 
 $(NAME):			$(OBJS)
 					$(LINK) -o $@ $^

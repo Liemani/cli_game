@@ -7,7 +7,7 @@ static t_vector2	*vector2_alloc(void)
 	return (malloc(sizeof(t_vector2)));
 }
 
-static void	vector2_init(t_vector2 *vector2, int x, int y)
+void	vector2_init(t_vector2 *vector2, int x, int y)
 {
 	vector2->x = x;
 	vector2->y = y;

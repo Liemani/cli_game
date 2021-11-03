@@ -7,6 +7,7 @@ typedef struct s_vector2
 	int	y;
 }	t_vector2;
 
+void		vector2_init(t_vector2 *vector2, int x, int y);
 t_vector2	*vector2_new(int x, int y);
 void		vector2_free(t_vector2 *vector2);
 

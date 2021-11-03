@@ -3,7 +3,7 @@
 
 # include "time.h"
 
-# define TARGET_FPS	60
+# define TARGET_FPS	1
 
 ///	- description:
 ///		buffer size is (width + 1) * height
@@ -14,7 +14,6 @@ typedef struct s_display
 	int		width;
 	int		height;
 	char	*buffer;
-	t_time	time_last_draw;
 }	t_display;
 
 ///	- type
